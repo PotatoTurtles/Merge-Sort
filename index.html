@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+</head>
+<body>
+    <script>
+        function mergeSort(arr){
+            //split
+            if(arr.length==1){
+                return arr
+            }
+            let arr1 = mergeSort(arr.slice(0,Math.floor(arr.length/2)));
+            let arr2 = mergeSort(arr.slice(Math.floor(arr.length/2)))
+            console.log(arr1,arr2)
+
+            //combine
+            let final = [];
+            while(arr1.length>0&&arr2.length>0){
+                final[final.length]=arr1[0]<arr2[0]?arr1.shift():arr2.shift();
+            }
+            final.push(...arr1);
+            final.push(...arr2);
+
+            return final
+        }
+
+        let arr = [3, 2, 1, 13, 8, 5, 0, 1];
+        console.log(mergeSort(arr));
+    </script>
+</body>
+</html>
